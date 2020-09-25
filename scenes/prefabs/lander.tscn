@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/prefabs/lander.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprite/lander.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprite/jet_small.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprite/fire_small_2.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprite/fire_small_1.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprite/jet_big.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[node name="lander" type="RigidBody2D" groups=[
+"lander",
+]]
+mass = 1530.61
+gravity_scale = 0.16
+continuous_cd = 2
+contact_monitor = true
+can_sleep = false
+script = ExtResource( 1 )
+
+[node name="collision" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -6, 0, -6, -2, -8, -2, -8, -6, -6, -6, -6, -8, -4, -8, -4, -10, 4, -10, 4, -8, 6, -8, 6, -6, 8, -6, 8, -2, 6, -2, 6, 0, 8, 0, 8, 4, 9, 4, 9, 9, 10, 9, 10, 10, 8, 10, 8, 8, 7, 8, 7, 6, 3, 6, 3, 7, 4, 7, 4, 8, -4, 8, -4, 7, -3, 7, -3, 6, -7, 6, -7, 8, -8, 8, -8, 10, -10, 10, -10, 9, -9, 9, -9, 4, -8, 4, -8, 0 )
+
+[node name="sprites" type="Node2D" parent="."]
+
+[node name="sprite" type="Sprite" parent="sprites"]
+texture = ExtResource( 2 )
+
+[node name="jet_right" type="AnimatedSprite" parent="sprites"]
+visible = false
+position = Vector2( 8, -4 )
+frames = SubResource( 1 )
+playing = true
+centered = false
+
+[node name="jet_left" type="AnimatedSprite" parent="sprites"]
+visible = false
+position = Vector2( -11, -4 )
+frames = SubResource( 1 )
+playing = true
+centered = false
+flip_h = true
+
+[node name="engine" type="AnimatedSprite" parent="sprites"]
+visible = false
+position = Vector2( 0, 10 )
+frames = SubResource( 2 )
+playing = true
