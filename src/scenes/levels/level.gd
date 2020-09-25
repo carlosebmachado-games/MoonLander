@@ -18,6 +18,5 @@ func _on_arrival_point_body_exited(body):
 func _on_lander_stopped():
 	stopped = true
 
-
 func _on_lander_moving():
 	stopped = false
