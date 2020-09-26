@@ -19,6 +19,10 @@ config/name="Moon Lander"
 run/main_scene="res://scenes/game.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://scenes/global.gd"
+
 [display]
 
 window/size/width=800

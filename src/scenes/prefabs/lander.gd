@@ -16,8 +16,17 @@ onready var spr_engine = $sprites/engine
 onready var spr_ljet = $sprites/jet_left
 onready var spr_rjet = $sprites/jet_right
 
+#objects
+onready var pivot_arrow = $pivot
+
+var reach_point_position = Vector2.ZERO
+var reach_point_distance = 0
+var show_arrow = true
+
 func _ready():
-	pass
+	#reach_point_position = Global.arrival_current_position
+	for ap in get_tree().get_nodes_in_group("arrival_point"):
+		reach_point_position = ap.position
 
 func _input(_event):
 	if Input.is_action_pressed("player_left"):
@@ -30,6 +39,11 @@ func _input(_event):
 		input_right = false
 
 func _process(_delta):
+	#arrow.set_global_pos(finger_down_pos)
+	if show_arrow:
+		pivot_arrow.rotation = (reach_point_position - position).angle() - rotation
+	reach_point_distance = position.distance_to(reach_point_position)
+	
 	if int(linear_velocity.x) == 0 and int(linear_velocity.y) == 0:
 		emit_signal("stopped")
 	else:
@@ -69,3 +83,11 @@ func left_propulser():
 
 func main_propulser():
 	return input_left and input_right
+
+func _on_arrival_point_screen_entered():
+	show_arrow = false
+	pivot_arrow.hide()
+
+func _on_arrival_point_screen_exited():
+	show_arrow = true
+	pivot_arrow.show()

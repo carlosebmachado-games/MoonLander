@@ -11,6 +11,15 @@ func _ready():
 	limit_left = top_left.position.x
 	limit_bottom = bottom_right.position.y
 	limit_right = bottom_right.position.x
+
+func _process(_delta):
+	for l in get_tree().get_nodes_in_group(\"lander\"):
+		#print(\"zoom: \" + str(zoom))
+		#var new_zoom = (l.linear_velocity.x + l.linear_velocity.y) * 0.005
+		var new_zoom = l.reach_point_distance * 0.005
+		#print(\"new zoom: \" + str(new_zoom))
+		new_zoom = clamp(new_zoom, 0.5, 1.5)
+		zoom = Vector2(new_zoom, new_zoom)
 "
 
 [node name="camera" type="Camera2D"]

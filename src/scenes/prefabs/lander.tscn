@@ -61,3 +61,10 @@ visible = false
 position = Vector2( 0, 10 )
 frames = SubResource( 2 )
 playing = true
+
+[node name="pivot" type="Node2D" parent="."]
+
+[node name="arrow" type="Polygon2D" parent="pivot"]
+position = Vector2( 22, 0 )
+color = Color( 0.196078, 1, 0.392157, 1 )
+polygon = PoolVector2Array( -0.0078125, 0.179688, 0, -0.210938, 23.1427, -0.224324, 23.1484, 0.130237 )
