@@ -1,22 +1,165 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/menus/main_menu.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/config_48.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/df_48.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/sprites/no_sound_48.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/tutorial_48.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/play_96.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/music_48.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/no_music_48.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/sound_48.png" type="Texture" id=9]
 
 [node name="main_menu" type="Control"]
-margin_right = 800.0
-margin_bottom = 450.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="play" type="Button" parent="."]
-margin_left = 315.051
-margin_top = 191.03
-margin_right = 436.051
-margin_bottom = 263.03
-text = "PLAY"
+[node name="m_container" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = -30.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="button_up" from="play" to="." method="_on_play_button_up"]
+
+[node name="vb_container" type="VBoxContainer" parent="m_container"]
+margin_right = 740.0
+margin_bottom = 390.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 90
+
+[node name="logo" type="Label" parent="m_container/vb_container"]
+margin_right = 740.0
+margin_bottom = 66.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+text = "MOON LANDER"
+align = 1
+valign = 1
+
+[node name="cc_play" type="CenterContainer" parent="m_container/vb_container"]
+margin_top = 156.0
+margin_right = 740.0
+margin_bottom = 252.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="play" type="TextureButton" parent="m_container/vb_container/cc_play"]
+margin_left = 322.0
+margin_right = 418.0
+margin_bottom = 96.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 6 )
+
+[node name="hb_container" type="HBoxContainer" parent="m_container/vb_container"]
+margin_top = 342.0
+margin_right = 740.0
+margin_bottom = 390.0
+size_flags_horizontal = 3
+custom_constants/separation = 20
+
+[node name="config" type="TextureButton" parent="m_container/vb_container/hb_container"]
+margin_right = 48.0
+margin_bottom = 48.0
+texture_normal = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="c_options" type="CenterContainer" parent="m_container/vb_container/hb_container"]
+margin_left = 68.0
+margin_right = 672.0
+margin_bottom = 48.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="tutorial" type="TextureButton" parent="m_container/vb_container/hb_container"]
+margin_left = 692.0
+margin_right = 740.0
+margin_bottom = 48.0
+texture_normal = ExtResource( 5 )
+
+[node name="popup_mo" type="Popup" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="close_mo" type="TextureButton" parent="popup_mo"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mc_mo" type="MarginContainer" parent="popup_mo"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 247.0
+margin_right = -722.0
+margin_bottom = -99.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hbc_mo" type="VBoxContainer" parent="popup_mo/mc_mo"]
+margin_right = 48.0
+margin_bottom = 104.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 8
+
+[node name="sound" type="TextureButton" parent="popup_mo/mc_mo/hbc_mo"]
+margin_right = 48.0
+margin_bottom = 48.0
+texture_normal = ExtResource( 9 )
+
+[node name="no_sound" type="TextureButton" parent="popup_mo/mc_mo/hbc_mo"]
+visible = false
+margin_right = 48.0
+margin_bottom = 48.0
+texture_normal = ExtResource( 4 )
+
+[node name="music" type="TextureButton" parent="popup_mo/mc_mo/hbc_mo"]
+margin_top = 56.0
+margin_right = 48.0
+margin_bottom = 104.0
+texture_normal = ExtResource( 7 )
+
+[node name="no_music" type="TextureButton" parent="popup_mo/mc_mo/hbc_mo"]
+visible = false
+margin_left = 112.0
+margin_right = 160.0
+margin_bottom = 48.0
+texture_normal = ExtResource( 8 )
+[connection signal="button_up" from="m_container/vb_container/cc_play/play" to="." method="_on_play_button_up"]
+[connection signal="button_up" from="m_container/vb_container/hb_container/config" to="." method="_on_config_button_up"]
+[connection signal="button_up" from="m_container/vb_container/hb_container/tutorial" to="." method="_on_tutorial_button_up"]
+[connection signal="button_up" from="popup_mo/close_mo" to="." method="_on_close_mo_button_up"]
+[connection signal="button_up" from="popup_mo/mc_mo/hbc_mo/sound" to="." method="_on_sound_button_up"]
+[connection signal="button_up" from="popup_mo/mc_mo/hbc_mo/no_sound" to="." method="_on_no_sound_button_up"]
+[connection signal="button_up" from="popup_mo/mc_mo/hbc_mo/music" to="." method="_on_music_button_up"]
+[connection signal="button_up" from="popup_mo/mc_mo/hbc_mo/no_music" to="." method="_on_no_music_button_up"]

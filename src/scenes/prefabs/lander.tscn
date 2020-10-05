@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/prefabs/lander.gd" type="Script" id=1]
-[ext_resource path="res://assets/sprite/lander.png" type="Texture" id=2]
-[ext_resource path="res://assets/sprite/jet_small.png" type="Texture" id=3]
-[ext_resource path="res://assets/sprite/fire_small_2.png" type="Texture" id=4]
-[ext_resource path="res://assets/sprite/fire_small_1.png" type="Texture" id=5]
-[ext_resource path="res://assets/sprite/jet_big.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/lander.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/jet_small.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/fire_small_2.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/fire_small_1.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/jet_big.png" type="Texture" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -26,7 +26,7 @@ animations = [ {
 [node name="lander" type="RigidBody2D" groups=[
 "lander",
 ]]
-mass = 1530.61
+mass = 15.3061
 gravity_scale = 0.16
 continuous_cd = 2
 contact_monitor = true
@@ -45,6 +45,7 @@ texture = ExtResource( 2 )
 visible = false
 position = Vector2( 8, -4 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 centered = false
 
@@ -52,6 +53,7 @@ centered = false
 visible = false
 position = Vector2( -11, -4 )
 frames = SubResource( 1 )
+frame = 1
 playing = true
 centered = false
 flip_h = true
@@ -60,6 +62,7 @@ flip_h = true
 visible = false
 position = Vector2( 0, 10 )
 frames = SubResource( 2 )
+frame = 1
 playing = true
 
 [node name="pivot" type="Node2D" parent="."]
@@ -67,4 +70,4 @@ playing = true
 [node name="arrow" type="Polygon2D" parent="pivot"]
 position = Vector2( 22, 0 )
 color = Color( 0.196078, 1, 0.392157, 1 )
-polygon = PoolVector2Array( -0.0078125, 0.179688, 0, -0.210938, 23.1427, -0.224324, 23.1484, 0.130237 )
+polygon = PoolVector2Array( 0, 0.5, 0, -0.5, 25, -0.5, 25, 0.5 )

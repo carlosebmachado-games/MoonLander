@@ -1,0 +1,232 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://assets/fonts/df_8.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/df_24.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scenes/levels/canvas_layer.gd" type="Script" id=3]
+[ext_resource path="res://assets/sprites/no_sound_48.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/music_48.png" type="Texture" id=5]
+[ext_resource path="res://assets/sprites/no_music_48.png" type="Texture" id=6]
+[ext_resource path="res://assets/sprites/sound_48.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/pause_48.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/play_32.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/back_32.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/menu_frame_150x200.png" type="Texture" id=11]
+
+[node name="canvas_layer" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="ui" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.15
+margin_left = 15.0
+margin_top = 15.0
+margin_right = -15.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hb_container" type="HBoxContainer" parent="ui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 50
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbc_movement" type="VBoxContainer" parent="ui/hb_container"]
+margin_right = 48.0
+margin_bottom = 52.0
+
+[node name="speed" type="Label" parent="ui/hb_container/vbc_movement"]
+margin_right = 48.0
+margin_bottom = 25.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.196078, 1, 0.392157, 1 )
+text = "H-SPEED:
+V-SPEED:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="distance" type="Label" parent="ui/hb_container/vbc_movement"]
+margin_top = 29.0
+margin_right = 48.0
+margin_bottom = 40.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.196078, 1, 0.392157, 1 )
+text = "DISTANCE:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vbc_control" type="VBoxContainer" parent="ui/hb_container"]
+margin_left = 98.0
+margin_right = 124.0
+margin_bottom = 52.0
+
+[node name="time" type="Label" parent="ui/hb_container/vbc_control"]
+margin_right = 26.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.196078, 1, 0.392157, 1 )
+text = "TIME:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fuel" type="Label" parent="ui/hb_container/vbc_control"]
+margin_top = 15.0
+margin_right = 26.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.196078, 1, 0.392157, 1 )
+text = "FUEL:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cc_spacer" type="CenterContainer" parent="ui/hb_container"]
+margin_left = 174.0
+margin_right = 672.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="pause" type="TextureButton" parent="ui/hb_container"]
+margin_left = 722.0
+margin_right = 770.0
+margin_bottom = 52.0
+texture_normal = ExtResource( 8 )
+
+[node name="pause_menu" type="Popup" parent="."]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="ColorRect" parent="pause_menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0, 0, 0, 0.588235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="m_container" type="MarginContainer" parent="pause_menu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = -30.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="c_container" type="CenterContainer" parent="pause_menu/m_container"]
+margin_right = 740.0
+margin_bottom = 390.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="items_bg" type="TextureRect" parent="pause_menu/m_container/c_container"]
+margin_left = 294.0
+margin_top = 95.0
+margin_right = 446.0
+margin_bottom = 295.0
+texture = ExtResource( 11 )
+
+[node name="vb_container" type="VBoxContainer" parent="pause_menu/m_container/c_container"]
+margin_left = 313.0
+margin_top = 108.0
+margin_right = 427.0
+margin_bottom = 281.0
+custom_constants/separation = 30
+
+[node name="lvl_name" type="Label" parent="pause_menu/m_container/c_container/vb_container"]
+margin_right = 114.0
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+text = "LEVEL 1"
+align = 1
+valign = 1
+
+[node name="cc_options" type="CenterContainer" parent="pause_menu/m_container/c_container/vb_container"]
+margin_top = 63.0
+margin_right = 114.0
+margin_bottom = 111.0
+
+[node name="hbc_options" type="HBoxContainer" parent="pause_menu/m_container/c_container/vb_container/cc_options"]
+margin_left = 5.0
+margin_right = 109.0
+margin_bottom = 48.0
+custom_constants/separation = 8
+
+[node name="sound" type="TextureButton" parent="pause_menu/m_container/c_container/vb_container/cc_options/hbc_options"]
+margin_right = 48.0
+margin_bottom = 48.0
+texture_normal = ExtResource( 7 )
+
+[node name="no_sound" type="TextureButton" parent="pause_menu/m_container/c_container/vb_container/cc_options/hbc_options"]
+visible = false
+margin_right = 48.0
+margin_bottom = 48.0
+texture_normal = ExtResource( 4 )
+
+[node name="music" type="TextureButton" parent="pause_menu/m_container/c_container/vb_container/cc_options/hbc_options"]
+margin_left = 56.0
+margin_right = 104.0
+margin_bottom = 48.0
+texture_normal = ExtResource( 5 )
+
+[node name="no_music" type="TextureButton" parent="pause_menu/m_container/c_container/vb_container/cc_options/hbc_options"]
+visible = false
+margin_left = 112.0
+margin_right = 160.0
+margin_bottom = 48.0
+texture_normal = ExtResource( 6 )
+
+[node name="cc_buttons" type="CenterContainer" parent="pause_menu/m_container/c_container/vb_container"]
+margin_top = 141.0
+margin_right = 114.0
+margin_bottom = 173.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="hbc_buttons" type="HBoxContainer" parent="pause_menu/m_container/c_container/vb_container/cc_buttons"]
+margin_left = 21.0
+margin_right = 93.0
+margin_bottom = 32.0
+custom_constants/separation = 8
+
+[node name="back" type="TextureButton" parent="pause_menu/m_container/c_container/vb_container/cc_buttons/hbc_buttons"]
+margin_right = 32.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 10 )
+
+[node name="play" type="TextureButton" parent="pause_menu/m_container/c_container/vb_container/cc_buttons/hbc_buttons"]
+margin_left = 40.0
+margin_right = 72.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 9 )
+[connection signal="button_up" from="ui/hb_container/pause" to="." method="_on_pause_button_up"]
+[connection signal="button_up" from="pause_menu/m_container/c_container/vb_container/cc_options/hbc_options/sound" to="." method="_on_sound_button_up"]
+[connection signal="button_up" from="pause_menu/m_container/c_container/vb_container/cc_options/hbc_options/no_sound" to="." method="_on_no_sound_button_up"]
+[connection signal="button_up" from="pause_menu/m_container/c_container/vb_container/cc_options/hbc_options/music" to="." method="_on_music_button_up"]
+[connection signal="button_up" from="pause_menu/m_container/c_container/vb_container/cc_options/hbc_options/no_music" to="." method="_on_no_music_button_up"]
+[connection signal="button_up" from="pause_menu/m_container/c_container/vb_container/cc_buttons/hbc_buttons/back" to="." method="_on_back_button_up"]
+[connection signal="button_up" from="pause_menu/m_container/c_container/vb_container/cc_buttons/hbc_buttons/play" to="." method="_on_play_button_up"]

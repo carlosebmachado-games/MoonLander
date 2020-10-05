@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/wind_particles.wav-7ab0f424b09a34da5ef0224276e8e003.sample"
+
+[deps]
+
+source_file="res://assets/audio/sounds/wind_particles.wav"
+dest_files=[ "res://.import/wind_particles.wav-7ab0f424b09a34da5ef0224276e8e003.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

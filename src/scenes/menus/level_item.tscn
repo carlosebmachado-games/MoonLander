@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/fonts/df_32.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/sprites/button_frame_72.png" type="Texture" id=2]
+
+[node name="level_item" type="TextureButton"]
+margin_right = 72.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text" type="Label" parent="."]
+margin_right = 72.0
+margin_bottom = 72.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 0.447059, 1, 0, 1 )
+text = "0"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

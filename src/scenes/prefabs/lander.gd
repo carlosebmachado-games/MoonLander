@@ -4,8 +4,8 @@ signal stopped
 signal moving
 
 # movement
-var thrust = 50000
-var side_thrust = 20000
+var thrust = 500
+var side_thrust = 300
 
 # controls
 var input_left = false
