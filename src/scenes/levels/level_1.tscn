@@ -43,6 +43,18 @@ polygon = PoolVector2Array( -402.028, 88.4189, -170.636, 219.287, 60.4408, 219.2
 
 [node name="arrival_point" parent="." instance=ExtResource( 5 )]
 position = Vector2( -49.5772, 218.285 )
+
+[node name="controls_wrap" type="Control" parent="."]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="controls_wrap"]
+margin_right = 12.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="exit" from="canvas_layer" to="." method="_on_canvas_layer_exit"]
 [connection signal="moving" from="lander" to="." method="_on_lander_moving"]
 [connection signal="stopped" from="lander" to="." method="_on_lander_stopped"]
