@@ -2,10 +2,13 @@ extends CanvasLayer
 
 signal exit
 
-onready var lbl_speed = $ui/hb_container/vbc_movement/speed
-onready var lbl_distance = $ui/hb_container/vbc_movement/distance
-onready var lbl_time = $ui/hb_container/vbc_control/time
-onready var lbl_fuel = $ui/hb_container/vbc_control/fuel
+signal btn_left_pressed
+signal btn_right_pressed
+
+onready var lbl_speed = $ui/vb_container/hb_ui/vbc_movement/speed
+onready var lbl_distance = $ui/vb_container/hb_ui/vbc_movement/distance
+onready var lbl_time = $ui/vb_container/hb_ui/vbc_control/time
+onready var lbl_fuel = $ui/vb_container/hb_ui/vbc_control/fuel
 
 onready var ui = $ui
 onready var pause_menu = $pause_menu
@@ -14,6 +17,8 @@ onready var btn_sound = $pause_menu/m_container/c_container/vb_container/cc_opti
 onready var btn_no_sound = $pause_menu/m_container/c_container/vb_container/cc_options/hbc_options/no_sound
 onready var btn_music = $pause_menu/m_container/c_container/vb_container/cc_options/hbc_options/music
 onready var btn_no_music = $pause_menu/m_container/c_container/vb_container/cc_options/hbc_options/no_music
+onready var btn_left = $ui/vb_container/hb_control/btn_left
+onready var btn_right = $ui/vb_container/hb_control/btn_right
 
 func _ready():
 	btn_music.visible = Global.music
@@ -65,3 +70,9 @@ func _on_no_music_button_up():
 	btn_music.show()
 	btn_no_music.hide()
 	Global.sound = false
+
+func _on_btn_left_pressed():
+	emit_signal("btn_left_pressed")
+
+func _on_btn_right_pressed():
+	emit_signal("btn_right_pressed")

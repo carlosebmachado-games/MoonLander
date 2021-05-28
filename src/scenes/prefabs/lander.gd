@@ -28,7 +28,7 @@ func _ready():
 	for ap in get_tree().get_nodes_in_group("arrival_point"):
 		reach_point_position = ap.position
 
-func _input(_event):
+func _input(event):
 	if Input.is_action_pressed("player_left"):
 		input_left = true
 	else:
@@ -37,6 +37,18 @@ func _input(_event):
 		input_right = true
 	else:
 		input_right = false
+	
+	if event.is_pressed() and event is InputEventScreenTouch:
+		if event.position.x < 400:
+			print('left')
+			input_left = true
+		else:
+			input_left = false
+		if event.position.x > 400:
+			print('right')
+			input_right = true
+		else:
+			input_right = false
 
 func _process(_delta):
 	#arrow.set_global_pos(finger_down_pos)
