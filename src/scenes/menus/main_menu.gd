@@ -15,7 +15,7 @@ func _ready():
 
 func _on_play_button_up():
 # warning-ignore:return_value_discarded
-	get_tree().change_scene("res://scenes/menus/level_choicer.tscn")
+	get_tree().change_scene("res://scenes/levels/level_1.tscn")
 	queue_free()
 
 func _on_tutorial_button_up():
