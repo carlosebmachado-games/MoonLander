@@ -47,18 +47,18 @@ func _input(event):
 		print(i)
 		if i in input_control:
 			if event.get_position().x < 400:
-				input_right = false
+				input_left = false
 				input_control.remove(i)
 			else:
-				input_left = false
+				input_right = false
 				input_control.remove(i)
 		else:
 			if event.get_position().x < 400:
-				input_right = true
-				input_control.remove(i)
-			else:
 				input_left = true
-				input_control.remove(i)
+				input_control.append(i)
+			else:
+				input_right = true
+				input_control.append(i)
 	
 	# handle debug keyboard input
 #	if Input.is_action_pressed("player_left"):
@@ -71,11 +71,6 @@ func _input(event):
 #		input_right = false
 
 func _process(_delta):
-	if Input.is_action_pressed("player_left"):
-		fake_touch(Vector2(200, 225))
-	if Input.is_action_pressed("player_right"):
-		fake_touch(Vector2(600, 225))
-	
 	#arrow.set_global_pos(finger_down_pos)
 	if show_arrow:
 		pivot_arrow.rotation = (reach_point_position - position).angle() - rotation
