@@ -28,29 +28,47 @@ func _ready():
 	for ap in get_tree().get_nodes_in_group("arrival_point"):
 		reach_point_position = ap.position
 
+var ieCount = 0
+
+func fake_touch(index, position):
+	var ev = InputEventScreenTouch.new()
+	ev.set_index(index)#BUTTON_LEFT)
+	ev.set_pressed(true)
+	ev.set_position(position)
+	#Input.parse_input_event(ev)
+	get_tree().input_event(ev)
+
 func _input(event):
 	# handle debug keyboard input
-	if Input.is_action_pressed("player_left"):
-		input_left = true
-	else:
-		input_left = false
-	if Input.is_action_pressed("player_right"):
-		input_right = true
-	else:
-		input_right = false
+#	if Input.is_action_pressed("player_left"):
+#		input_left = true
+#	else:
+#		input_left = false
+#	if Input.is_action_pressed("player_right"):
+#		input_right = true
+#	else:
+#		input_right = false
 
 	# handle touch input
-	if Input.is_mouse_button_pressed(1):
-		if event.position.x < 400:
-			input_left = true
-		else:
-			input_left = false
-		if event.position.x > 400:
-			input_right = true
-		else:
-			input_right = false
+	if event is InputEventScreenTouch:
+		print(event.get_index())
+		
+#	if Input.is_mouse_button_pressed(1):
+#		if event.position.x < 400:
+#			input_left = true
+#		else:
+#			input_left = false
+#		if event.position.x > 400:
+#			input_right = true
+#		else:
+#			input_right = false
 
 func _process(_delta):
+	if Input.is_action_pressed("player_left"):
+		fake_touch(0, Vector2(200, 225))
+	if Input.is_action_pressed("player_right"):
+		fake_touch(1, Vector2(600, 225))
+	
 	#arrow.set_global_pos(finger_down_pos)
 	if show_arrow:
 		pivot_arrow.rotation = (reach_point_position - position).angle() - rotation
