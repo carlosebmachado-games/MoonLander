@@ -29,6 +29,7 @@ func _ready():
 		reach_point_position = ap.position
 
 func _input(event):
+	# handle debug keyboard input
 	if Input.is_action_pressed("player_left"):
 		input_left = true
 	else:
@@ -37,15 +38,14 @@ func _input(event):
 		input_right = true
 	else:
 		input_right = false
-	
-	if event.is_pressed() and event is InputEventScreenTouch:
+
+	# handle touch input
+	if Input.is_action_pressed("touch"):
 		if event.position.x < 400:
-			print('left')
 			input_left = true
 		else:
 			input_left = false
 		if event.position.x > 400:
-			print('right')
 			input_right = true
 		else:
 			input_right = false

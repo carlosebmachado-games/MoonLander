@@ -1,41 +1,31 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://assets/fonts/df_8.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/fonts/df_24.tres" type="DynamicFont" id=2]
-[ext_resource path="res://scenes/levels/canvas_layer.gd" type="Script" id=3]
-[ext_resource path="res://assets/sprites/no_sound_48.png" type="Texture" id=4]
-[ext_resource path="res://assets/sprites/music_48.png" type="Texture" id=5]
-[ext_resource path="res://assets/sprites/no_music_48.png" type="Texture" id=6]
-[ext_resource path="res://assets/sprites/sound_48.png" type="Texture" id=7]
-[ext_resource path="res://assets/sprites/pause_48.png" type="Texture" id=8]
-[ext_resource path="res://assets/sprites/play_32.png" type="Texture" id=9]
-[ext_resource path="res://assets/sprites/back_32.png" type="Texture" id=10]
-[ext_resource path="res://assets/sprites/menu_frame_150x200.png" type="Texture" id=11]
+[ext_resource path="res://scenes/game/canvas_layer.gd" type="Script" id=1]
+[ext_resource path="res://assets/sprites/sound_48.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/no_sound_48.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/music_48.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/no_music_48.png" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/df_24.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/sprites/back_32.png" type="Texture" id=7]
+[ext_resource path="res://assets/sprites/play_32.png" type="Texture" id=8]
+[ext_resource path="res://assets/sprites/pause_48.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/menu_frame_150x200.png" type="Texture" id=10]
+[ext_resource path="res://assets/fonts/df_8.tres" type="DynamicFont" id=11]
 
 [node name="canvas_layer" type="CanvasLayer"]
-script = ExtResource( 3 )
+script = ExtResource( 1 )
 
-[node name="ui" type="Control" parent="."]
+[node name="ui" type="MarginContainer" parent="."]
 margin_left = 15.0
 margin_top = 15.0
 margin_right = 785.0
-margin_bottom = 435.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="vb_container" type="VBoxContainer" parent="ui"]
-margin_right = 770.0
-margin_bottom = 420.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="hb_ui" type="HBoxContainer" parent="ui/vb_container"]
+[node name="hb_ui" type="HBoxContainer" parent="ui"]
 margin_right = 770.0
 margin_bottom = 48.0
 size_flags_horizontal = 3
@@ -44,14 +34,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="vbc_movement" type="VBoxContainer" parent="ui/vb_container/hb_ui"]
+[node name="vbc_movement" type="VBoxContainer" parent="ui/hb_ui"]
 margin_right = 48.0
 margin_bottom = 48.0
 
-[node name="speed" type="Label" parent="ui/vb_container/hb_ui/vbc_movement"]
+[node name="speed" type="Label" parent="ui/hb_ui/vbc_movement"]
 margin_right = 48.0
 margin_bottom = 25.0
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 11 )
 custom_colors/font_color = Color( 0.196078, 1, 0.392157, 1 )
 text = "H-SPEED:
 V-SPEED:"
@@ -59,90 +49,55 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="distance" type="Label" parent="ui/vb_container/hb_ui/vbc_movement"]
+[node name="distance" type="Label" parent="ui/hb_ui/vbc_movement"]
 margin_top = 29.0
 margin_right = 48.0
 margin_bottom = 40.0
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 11 )
 custom_colors/font_color = Color( 0.196078, 1, 0.392157, 1 )
 text = "DISTANCE:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="vbc_control" type="VBoxContainer" parent="ui/vb_container/hb_ui"]
+[node name="vbc_control" type="VBoxContainer" parent="ui/hb_ui"]
 margin_left = 98.0
 margin_right = 124.0
 margin_bottom = 48.0
 
-[node name="time" type="Label" parent="ui/vb_container/hb_ui/vbc_control"]
+[node name="time" type="Label" parent="ui/hb_ui/vbc_control"]
 margin_right = 26.0
 margin_bottom = 11.0
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 11 )
 custom_colors/font_color = Color( 0.196078, 1, 0.392157, 1 )
 text = "TIME:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="fuel" type="Label" parent="ui/vb_container/hb_ui/vbc_control"]
+[node name="fuel" type="Label" parent="ui/hb_ui/vbc_control"]
 margin_top = 15.0
 margin_right = 26.0
 margin_bottom = 26.0
-custom_fonts/font = ExtResource( 1 )
+custom_fonts/font = ExtResource( 11 )
 custom_colors/font_color = Color( 0.196078, 1, 0.392157, 1 )
 text = "FUEL:"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="cc_spacer" type="CenterContainer" parent="ui/vb_container/hb_ui"]
+[node name="cc_spacer" type="CenterContainer" parent="ui/hb_ui"]
 margin_left = 174.0
 margin_right = 672.0
 margin_bottom = 48.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="pause" type="TextureButton" parent="ui/vb_container/hb_ui"]
+[node name="pause" type="TextureButton" parent="ui/hb_ui"]
 margin_left = 722.0
 margin_right = 770.0
 margin_bottom = 48.0
-texture_normal = ExtResource( 8 )
-
-[node name="hb_control" type="HBoxContainer" parent="ui/vb_container"]
-margin_top = 52.0
-margin_right = 770.0
-margin_bottom = 420.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="btn_left" type="Button" parent="ui/vb_container/hb_control"]
-visible = false
-modulate = Color( 1, 1, 1, 0.282353 )
-margin_right = 383.0
-margin_bottom = 368.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-keep_pressed_outside = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="btn_right" type="Button" parent="ui/vb_container/hb_control"]
-visible = false
-modulate = Color( 1, 1, 1, 0.282353 )
-margin_left = 387.0
-margin_right = 770.0
-margin_bottom = 368.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-keep_pressed_outside = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+texture_normal = ExtResource( 9 )
 
 [node name="pause_menu" type="Popup" parent="."]
 pause_mode = 2
@@ -189,7 +144,7 @@ margin_left = 294.0
 margin_top = 95.0
 margin_right = 446.0
 margin_bottom = 295.0
-texture = ExtResource( 11 )
+texture = ExtResource( 10 )
 
 [node name="vb_container" type="VBoxContainer" parent="pause_menu/m_container/c_container"]
 margin_left = 313.0
@@ -201,7 +156,7 @@ custom_constants/separation = 30
 [node name="lvl_name" type="Label" parent="pause_menu/m_container/c_container/vb_container"]
 margin_right = 114.0
 margin_bottom = 33.0
-custom_fonts/font = ExtResource( 2 )
+custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0, 1, 0, 1 )
 text = "LEVEL 1"
 align = 1
@@ -221,26 +176,26 @@ custom_constants/separation = 8
 [node name="sound" type="TextureButton" parent="pause_menu/m_container/c_container/vb_container/cc_options/hbc_options"]
 margin_right = 48.0
 margin_bottom = 48.0
-texture_normal = ExtResource( 7 )
+texture_normal = ExtResource( 2 )
 
 [node name="no_sound" type="TextureButton" parent="pause_menu/m_container/c_container/vb_container/cc_options/hbc_options"]
 visible = false
 margin_right = 48.0
 margin_bottom = 48.0
-texture_normal = ExtResource( 4 )
+texture_normal = ExtResource( 3 )
 
 [node name="music" type="TextureButton" parent="pause_menu/m_container/c_container/vb_container/cc_options/hbc_options"]
 margin_left = 56.0
 margin_right = 104.0
 margin_bottom = 48.0
-texture_normal = ExtResource( 5 )
+texture_normal = ExtResource( 4 )
 
 [node name="no_music" type="TextureButton" parent="pause_menu/m_container/c_container/vb_container/cc_options/hbc_options"]
 visible = false
 margin_left = 112.0
 margin_right = 160.0
 margin_bottom = 48.0
-texture_normal = ExtResource( 6 )
+texture_normal = ExtResource( 5 )
 
 [node name="cc_buttons" type="CenterContainer" parent="pause_menu/m_container/c_container/vb_container"]
 margin_top = 141.0
@@ -258,17 +213,14 @@ custom_constants/separation = 8
 [node name="back" type="TextureButton" parent="pause_menu/m_container/c_container/vb_container/cc_buttons/hbc_buttons"]
 margin_right = 32.0
 margin_bottom = 32.0
-texture_normal = ExtResource( 10 )
+texture_normal = ExtResource( 7 )
 
 [node name="play" type="TextureButton" parent="pause_menu/m_container/c_container/vb_container/cc_buttons/hbc_buttons"]
 margin_left = 40.0
 margin_right = 72.0
 margin_bottom = 32.0
-texture_normal = ExtResource( 9 )
-
-[connection signal="button_up" from="ui/vb_container/hb_ui/pause" to="." method="_on_pause_button_up"]
-[connection signal="pressed" from="ui/vb_container/hb_control/btn_left" to="." method="_on_btn_left_pressed"]
-[connection signal="pressed" from="ui/vb_container/hb_control/btn_right" to="." method="_on_btn_right_pressed"]
+texture_normal = ExtResource( 8 )
+[connection signal="button_up" from="ui/hb_ui/pause" to="." method="_on_pause_button_up"]
 [connection signal="button_up" from="pause_menu/m_container/c_container/vb_container/cc_options/hbc_options/sound" to="." method="_on_sound_button_up"]
 [connection signal="button_up" from="pause_menu/m_container/c_container/vb_container/cc_options/hbc_options/no_sound" to="." method="_on_no_sound_button_up"]
 [connection signal="button_up" from="pause_menu/m_container/c_container/vb_container/cc_options/hbc_options/music" to="." method="_on_music_button_up"]

@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://scenes/levels/terrain.gd" type="Script" id=1]
-[ext_resource path="res://scenes/levels/canvas_layer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/game/terrain.gd" type="Script" id=1]
+[ext_resource path="res://scenes/game/canvas_layer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/prefabs/camera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/prefabs/lander.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/prefabs/arrival_point.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/levels/level.gd" type="Script" id=6]
+[ext_resource path="res://scenes/game/game.gd" type="Script" id=6]
 
 [node name="level_1" type="Node2D"]
 script = ExtResource( 6 )
@@ -43,7 +43,7 @@ polygon = PoolVector2Array( -402.028, 88.4189, -170.636, 219.287, 60.4408, 219.2
 
 [node name="arrival_point" parent="." instance=ExtResource( 5 )]
 position = Vector2( -49.5772, 218.285 )
-
+[connection signal="exit" from="canvas_layer" to="." method="_on_canvas_layer_exit"]
 [connection signal="moving" from="lander" to="." method="_on_lander_moving"]
 [connection signal="stopped" from="lander" to="." method="_on_lander_stopped"]
 [connection signal="body_entered" from="arrival_point" to="." method="_on_arrival_point_body_entered"]
