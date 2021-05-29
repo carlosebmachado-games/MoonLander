@@ -220,6 +220,7 @@ margin_left = 40.0
 margin_right = 72.0
 margin_bottom = 32.0
 texture_normal = ExtResource( 8 )
+
 [connection signal="button_up" from="ui/hb_ui/pause" to="." method="_on_pause_button_up"]
 [connection signal="button_up" from="pause_menu/m_container/c_container/vb_container/cc_options/hbc_options/sound" to="." method="_on_sound_button_up"]
 [connection signal="button_up" from="pause_menu/m_container/c_container/vb_container/cc_options/hbc_options/no_sound" to="." method="_on_no_sound_button_up"]

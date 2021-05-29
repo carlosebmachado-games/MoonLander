@@ -23,12 +23,12 @@ var reach_point_position = Vector2.ZERO
 var reach_point_distance = 0
 var show_arrow = true
 
+onready var game = get_tree().get_current_scene()
+
 func _ready():
 	#reach_point_position = Global.arrival_current_position
 	for ap in get_tree().get_nodes_in_group("arrival_point"):
 		reach_point_position = ap.position
-
-var ieCount = 0
 
 func fake_touch(index, position):
 	var ev = InputEventScreenTouch.new()
@@ -52,7 +52,12 @@ func _input(event):
 	# handle touch input
 	if event is InputEventScreenTouch:
 		print(event.get_index())
-		
+		var lbl = game.get_child(0).get_child(2)
+		var txt = lbl.text
+		if txt.length() > 5:
+			lbl.text = txt.substr(txt.length() - 5, 5) + str(event.get_index()) + '\n'
+		else:
+			lbl.text += str(event.get_index()) + '\n'
 #	if Input.is_mouse_button_pressed(1):
 #		if event.position.x < 400:
 #			input_left = true
