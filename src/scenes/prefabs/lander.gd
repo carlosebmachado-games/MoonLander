@@ -44,7 +44,14 @@ func _input(event):
 	# handle touch input
 	if event is InputEventScreenTouch:
 		var i = event.get_index()
-		print(i)
+		
+		var lbl = game.get_child(0).get_child(2)
+		var txt = lbl.text
+		if txt.length() > 5:
+			lbl.text = txt.substr(txt.length() - 5, 5) + str(event.get_index()) + '\n'
+		else:
+			lbl.text += str(event.get_index()) + '\n'
+		
 		if i in input_control:
 			if event.get_position().x < 400:
 				input_left = false
