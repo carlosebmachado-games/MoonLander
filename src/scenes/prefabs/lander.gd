@@ -39,6 +39,7 @@ func fake_touch(position):
 	get_tree().input_event(ev)
 
 var input_control = []
+var count = 0
 
 func _input(event):
 	# handle touch input
@@ -47,25 +48,31 @@ func _input(event):
 		
 		var lbl = game.get_child(0).get_child(2)
 		var txt = lbl.text
-		if txt.length() > 5:
-			lbl.text = txt.substr(txt.length() - 5, 5) + str(event.get_index()) + '\n'
+		count+=1
+		if txt.length() > 20:
+			lbl.text = txt.substr(txt.length() - 20, 20) + str(count) + ': ' + str(event.get_index()) + '\n'
 		else:
-			lbl.text += str(event.get_index()) + '\n'
+			lbl.text += str(count) + ': ' + str(event.get_index()) + '\n'
 		
-		if i in input_control:
-			if event.get_position().x < 400:
-				input_left = false
-				input_control.remove(i)
-			else:
-				input_right = false
-				input_control.remove(i)
+		if event.get_position().x < 400:
+			input_left = not input_left
 		else:
-			if event.get_position().x < 400:
-				input_left = true
-				input_control.append(i)
-			else:
-				input_right = true
-				input_control.append(i)
+			input_right = not input_right
+		
+#		if i in input_control:
+#			if event.get_position().x < 400:
+#				input_left = false
+#				input_control.remove(i)
+#			else:
+#				input_right = false
+#				input_control.remove(i)
+#		else:
+#			if event.get_position().x < 400:
+#				input_left = true
+#				input_control.append(i)
+#			else:
+#				input_right = true
+#				input_control.append(i)
 	
 	# handle debug keyboard input
 #	if Input.is_action_pressed("player_left"):
