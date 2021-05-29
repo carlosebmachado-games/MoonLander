@@ -30,9 +30,9 @@ func _ready():
 	for ap in get_tree().get_nodes_in_group("arrival_point"):
 		reach_point_position = ap.position
 
-func fake_touch(index, position):
+func fake_touch(position):
 	var ev = InputEventScreenTouch.new()
-	ev.set_index(index)#BUTTON_LEFT)
+	#ev.set_index(index)#BUTTON_LEFT)
 	ev.set_pressed(true)
 	ev.set_position(position)
 	#Input.parse_input_event(ev)
@@ -43,28 +43,22 @@ var input_control = []
 func _input(event):
 	# handle touch input
 	if event is InputEventScreenTouch:
-		if event.get_position().x < 400:
-			print('left')
-			var i = event.get_index()
-			if i in input_control:
-				print('enable left')
-				input_left = false
-				input_control.remove(i)
-			else:
-				print('disable left')
-				input_left = true
-				input_control.append(i)
-		else:
-			print('right')
-			var i = event.get_index()
-			if i in input_control:
-				print('enable right')
+		var i = event.get_index()
+		print(i)
+		if i in input_control:
+			if event.get_position().x < 400:
 				input_right = false
 				input_control.remove(i)
 			else:
-				print('disable right')
+				input_left = false
+				input_control.remove(i)
+		else:
+			if event.get_position().x < 400:
 				input_right = true
-				input_control.append(i)
+				input_control.remove(i)
+			else:
+				input_left = true
+				input_control.remove(i)
 	
 	# handle debug keyboard input
 #	if Input.is_action_pressed("player_left"):
@@ -78,9 +72,9 @@ func _input(event):
 
 func _process(_delta):
 	if Input.is_action_pressed("player_left"):
-		fake_touch(0, Vector2(200, 225))
+		fake_touch(Vector2(200, 225))
 	if Input.is_action_pressed("player_right"):
-		fake_touch(1, Vector2(600, 225))
+		fake_touch(Vector2(600, 225))
 	
 	#arrow.set_global_pos(finger_down_pos)
 	if show_arrow:
