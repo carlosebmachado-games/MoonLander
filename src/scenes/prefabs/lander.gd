@@ -38,7 +38,34 @@ func fake_touch(index, position):
 	#Input.parse_input_event(ev)
 	get_tree().input_event(ev)
 
+var input_control = []
+
 func _input(event):
+	# handle touch input
+	if event is InputEventScreenTouch:
+		if event.get_position().x < 400:
+			print('left')
+			var i = event.get_index()
+			if i in input_control:
+				print('enable left')
+				input_left = false
+				input_control.remove(i)
+			else:
+				print('disable left')
+				input_left = true
+				input_control.append(i)
+		else:
+			print('right')
+			var i = event.get_index()
+			if i in input_control:
+				print('enable right')
+				input_right = false
+				input_control.remove(i)
+			else:
+				print('disable right')
+				input_right = true
+				input_control.append(i)
+	
 	# handle debug keyboard input
 #	if Input.is_action_pressed("player_left"):
 #		input_left = true
@@ -48,25 +75,6 @@ func _input(event):
 #		input_right = true
 #	else:
 #		input_right = false
-
-	# handle touch input
-	if event is InputEventScreenTouch:
-		print(event.get_index())
-		var lbl = game.get_child(0).get_child(2)
-		var txt = lbl.text
-		if txt.length() > 5:
-			lbl.text = txt.substr(txt.length() - 5, 5) + str(event.get_index()) + '\n'
-		else:
-			lbl.text += str(event.get_index()) + '\n'
-#	if Input.is_mouse_button_pressed(1):
-#		if event.position.x < 400:
-#			input_left = true
-#		else:
-#			input_left = false
-#		if event.position.x > 400:
-#			input_right = true
-#		else:
-#			input_right = false
 
 func _process(_delta):
 	if Input.is_action_pressed("player_left"):
