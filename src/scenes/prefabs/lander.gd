@@ -40,7 +40,7 @@ func _input(event):
 		input_right = false
 
 	# handle touch input
-	if Input.is_action_pressed("touch"):
+	if Input.is_mouse_button_pressed(1):
 		if event.position.x < 400:
 			input_left = true
 		else:
