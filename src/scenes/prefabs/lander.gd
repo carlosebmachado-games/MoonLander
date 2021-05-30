@@ -45,14 +45,15 @@ func _input(event):
 	# todo: make both controls work together
 	
 	# handle debug keyboard input
-	if Input.is_action_pressed("player_left"):
-		input_left = true
-	else:
-		input_left = false
-	if Input.is_action_pressed("player_right"):
-		input_right = true
-	else:
-		input_right = false
+	if event is InputEventKey:
+		if Input.is_action_pressed("player_left"):
+			input_left = true
+		else:
+			input_left = false
+		if Input.is_action_pressed("player_right"):
+			input_right = true
+		else:
+			input_right = false
 	
 	# handle touch input
 	if event is InputEventScreenTouch:
