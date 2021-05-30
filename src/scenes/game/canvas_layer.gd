@@ -15,6 +15,8 @@ onready var btn_no_sound = $pause_menu/m_container/c_container/vb_container/cc_o
 onready var btn_music = $pause_menu/m_container/c_container/vb_container/cc_options/hbc_options/music
 onready var btn_no_music = $pause_menu/m_container/c_container/vb_container/cc_options/hbc_options/no_music
 
+onready var game = get_parent()
+
 func _ready():
 	btn_music.visible = Global.music
 	btn_no_music.visible = not Global.music
@@ -32,7 +34,7 @@ func _process(_delta):
 			dist = 0
 		lbl_distance.text = "DISTANCE: " + str(dist)
 	
-	lbl_time.text = "TIME: 0"
+	lbl_time.text = "TIME: " + str(game.time_elapsed)
 	lbl_fuel.text = "FUEL: 100"
 
 func _on_pause_button_up():

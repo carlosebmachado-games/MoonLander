@@ -147,29 +147,28 @@ margin_bottom = 295.0
 texture = ExtResource( 10 )
 
 [node name="vb_container" type="VBoxContainer" parent="pause_menu/m_container/c_container"]
-margin_left = 313.0
+margin_left = 318.0
 margin_top = 108.0
-margin_right = 427.0
+margin_right = 422.0
 margin_bottom = 281.0
 custom_constants/separation = 30
 
 [node name="lvl_name" type="Label" parent="pause_menu/m_container/c_container/vb_container"]
-margin_right = 114.0
+margin_right = 104.0
 margin_bottom = 33.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0, 1, 0, 1 )
-text = "LEVEL 1"
+text = "PAUSE MENU"
 align = 1
 valign = 1
 
 [node name="cc_options" type="CenterContainer" parent="pause_menu/m_container/c_container/vb_container"]
 margin_top = 63.0
-margin_right = 114.0
+margin_right = 104.0
 margin_bottom = 111.0
 
 [node name="hbc_options" type="HBoxContainer" parent="pause_menu/m_container/c_container/vb_container/cc_options"]
-margin_left = 5.0
-margin_right = 109.0
+margin_right = 104.0
 margin_bottom = 48.0
 custom_constants/separation = 8
 
@@ -199,14 +198,14 @@ texture_normal = ExtResource( 5 )
 
 [node name="cc_buttons" type="CenterContainer" parent="pause_menu/m_container/c_container/vb_container"]
 margin_top = 141.0
-margin_right = 114.0
+margin_right = 104.0
 margin_bottom = 173.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="hbc_buttons" type="HBoxContainer" parent="pause_menu/m_container/c_container/vb_container/cc_buttons"]
-margin_left = 21.0
-margin_right = 93.0
+margin_left = 16.0
+margin_right = 88.0
 margin_bottom = 32.0
 custom_constants/separation = 8
 
@@ -220,7 +219,6 @@ margin_left = 40.0
 margin_right = 72.0
 margin_bottom = 32.0
 texture_normal = ExtResource( 8 )
-
 [connection signal="button_up" from="ui/hb_ui/pause" to="." method="_on_pause_button_up"]
 [connection signal="button_up" from="pause_menu/m_container/c_container/vb_container/cc_options/hbc_options/sound" to="." method="_on_sound_button_up"]
 [connection signal="button_up" from="pause_menu/m_container/c_container/vb_container/cc_options/hbc_options/no_sound" to="." method="_on_no_sound_button_up"]

@@ -4,8 +4,11 @@ signal stopped
 signal moving
 
 # movement
-var thrust = 500
-var side_thrust = 300
+const THRUST = 500
+const SIDE_THRUST = 300
+const MAX_FUEL = 100
+const MIN_FUEL = 0
+var fuel = 100
 
 # controls
 var input_left = false
@@ -16,34 +19,19 @@ onready var spr_engine = $sprites/engine
 onready var spr_ljet = $sprites/jet_left
 onready var spr_rjet = $sprites/jet_right
 
-#objects
+# objects
 onready var pivot_arrow = $pivot
 
 var reach_point_position = Vector2.ZERO
 var reach_point_distance = 0
 var show_arrow = true
 
-onready var game = get_tree().get_current_scene()
-
 func _ready():
 	#reach_point_position = Global.arrival_current_position
 	for ap in get_tree().get_nodes_in_group("arrival_point"):
 		reach_point_position = ap.position
 
-func fake_touch(position):
-	var ev = InputEventScreenTouch.new()
-	#ev.set_index(index)#BUTTON_LEFT)
-	ev.set_pressed(true)
-	ev.set_position(position)
-	#Input.parse_input_event(ev)
-	get_tree().input_event(ev)
-
-var input_control = []
-var count = 0
-
 func _input(event):
-	# todo: make both controls work together
-	
 	# handle debug keyboard input
 	if event is InputEventKey:
 		if Input.is_action_pressed("player_left"):
@@ -90,15 +78,23 @@ func _process(_delta):
 
 func _physics_process(delta):
 	var direction = Vector2(sin(rotation), -cos(rotation))
-	var dir_thrust = direction * thrust
+	var dir_thrust = direction * THRUST
 	
 	if main_propulser():
 		apply_central_impulse(dir_thrust * delta)
 	elif left_propulser():
-		apply_torque_impulse(side_thrust * delta)
+		apply_torque_impulse(SIDE_THRUST * delta)
 	elif right_propulser():
-		apply_torque_impulse(-(side_thrust * delta))
-	
+		apply_torque_impulse(-(SIDE_THRUST * delta))
+
+func fake_touch(position):
+	var ev = InputEventScreenTouch.new()
+	#ev.set_index(index)#BUTTON_LEFT)
+	ev.set_pressed(true)
+	ev.set_position(position)
+	Input.parse_input_event(ev)
+	#get_tree().input_event(ev)
+
 func right_propulser():
 	return input_right
 
