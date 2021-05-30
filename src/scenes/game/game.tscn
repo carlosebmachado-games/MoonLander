@@ -12,16 +12,6 @@ script = ExtResource( 6 )
 
 [node name="canvas_layer" parent="." instance=ExtResource( 2 )]
 
-[node name="Label" type="Label" parent="canvas_layer"]
-margin_left = 246.0
-margin_right = 670.0
-margin_bottom = 59.0
-custom_colors/font_color = Color( 0.243137, 1, 0, 1 )
-text = "text"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="camera" parent="." instance=ExtResource( 3 )]
 position = Vector2( -2389, -882 )
 rotation = -1.5708
