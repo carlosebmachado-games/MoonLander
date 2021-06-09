@@ -7,8 +7,6 @@ var time_start = 0
 var time_now = 0
 var time_elapsed = 0
 
-export var new_level = ""
-
 func _ready():
 	time_start = OS.get_ticks_msec()
 

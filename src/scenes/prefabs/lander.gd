@@ -21,6 +21,7 @@ onready var spr_rjet = $sprites/jet_right
 
 # objects
 onready var pivot_arrow = $pivot
+onready var fuel_timer = $fuel_count
 
 var reach_point_position = Vector2.ZERO
 var reach_point_distance = 0
@@ -63,18 +64,26 @@ func _process(_delta):
 	
 	if main_propulser():
 		spr_engine.show()
+		if fuel_timer.is_stopped():
+			fuel_timer.start()
 	else:
 		spr_engine.hide()
+		if not fuel_timer.is_stopped():
+			fuel_timer.stop()
 	
 	if left_propulser() and not main_propulser():
 		spr_ljet.show()
+		fuel_timer.start()
 	else:
 		spr_ljet.hide()
+		fuel_timer.stop()
 	
 	if right_propulser() and not main_propulser():
 		spr_rjet.show()
+		fuel_timer.start()
 	else:
 		spr_rjet.hide()
+		fuel_timer.stop()
 
 func _physics_process(delta):
 	var direction = Vector2(sin(rotation), -cos(rotation))
@@ -111,3 +120,7 @@ func _on_arrival_point_screen_entered():
 func _on_arrival_point_screen_exited():
 	show_arrow = true
 	pivot_arrow.show()
+
+func _on_fuel_count_timeout():
+	print('foi')
+	fuel -= 1

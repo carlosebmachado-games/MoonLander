@@ -33,9 +33,9 @@ func _process(_delta):
 			int(l.linear_velocity.y) == 0):
 			dist = 0
 		lbl_distance.text = "DISTANCE: " + str(dist)
+		lbl_fuel.text = "FUEL: " + str(l.fuel)
 	
 	lbl_time.text = "TIME: " + str(game.time_elapsed)
-	lbl_fuel.text = "FUEL: 100"
 
 func _on_pause_button_up():
 	get_tree().paused = true

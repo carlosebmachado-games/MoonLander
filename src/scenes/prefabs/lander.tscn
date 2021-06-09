@@ -71,3 +71,7 @@ playing = true
 position = Vector2( 22, 0 )
 color = Color( 0.196078, 1, 0.392157, 1 )
 polygon = PoolVector2Array( 0, 0.5, 0, -0.5, 25, -0.5, 25, 0.5 )
+
+[node name="fuel_count" type="Timer" parent="."]
+wait_time = 5.0
+[connection signal="timeout" from="fuel_count" to="." method="_on_fuel_count_timeout"]
