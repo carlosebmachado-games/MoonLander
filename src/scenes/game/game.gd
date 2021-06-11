@@ -11,15 +11,15 @@ func _ready():
 	time_start = OS.get_ticks_msec()
 
 func _process(_delta):
-	if not (stopped and on_area):
-		time_now = OS.get_ticks_msec()
-		time_elapsed = (time_now - time_start) / 1000.0
 	#print(time_elapsed)
+	if stopped and on_area:
+		get_tree().change_scene("res://scenes/menus/end_game.tscn")
 	
-	#print(on_area and stopped)
-	
-#	if Input.is_action_just_pressed("ui_accept"):
-#		get_tree().reload_current_scene()
+	time_now = OS.get_ticks_msec()
+	time_elapsed = (time_now - time_start) / 1000.0
+
+	if Input.is_action_just_pressed("ui_accept"):
+		get_tree().reload_current_scene()
 
 func _on_arrival_point_body_entered(body):
 	if body.name == "lander":
