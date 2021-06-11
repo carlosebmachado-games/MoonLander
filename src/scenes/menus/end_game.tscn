@@ -38,30 +38,25 @@ custom_colors/font_color = Color( 0, 1, 0, 1 )
 text = "ENTER YOUR NAME"
 align = 1
 
-[node name="hsep" type="HSeparator" parent="enter_name/m_container/vb_container"]
+[node name="hsep" type="CenterContainer" parent="enter_name/m_container/vb_container"]
 margin_top = 37.0
 margin_right = 720.0
 margin_bottom = 133.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CenterContainer" type="CenterContainer" parent="enter_name/m_container/vb_container"]
+[node name="txt_name" type="Label" parent="enter_name/m_container/vb_container"]
 margin_top = 137.0
 margin_right = 720.0
 margin_bottom = 233.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="txt_name" type="TextEdit" parent="enter_name/m_container/vb_container/CenterContainer"]
-margin_right = 250.0
-margin_bottom = 40.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
-custom_colors/font_color_readonly = Color( 0, 1, 0, 1 )
-text = "CARLOS"
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+align = 1
+valign = 1
 
-[node name="hsep2" type="HSeparator" parent="enter_name/m_container/vb_container"]
+[node name="hsep2" type="CenterContainer" parent="enter_name/m_container/vb_container"]
 margin_top = 237.0
 margin_right = 720.0
 margin_bottom = 333.0
@@ -78,8 +73,60 @@ text = "PRESS ENTER TO CONTINUE"
 align = 1
 
 [node name="scores" type="Control" parent="."]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
+rect_pivot_offset = Vector2( -184.738, 150.481 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="m_container2" type="MarginContainer" parent="scores"]
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 760.0
+margin_bottom = 410.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="vb_container" type="VBoxContainer" parent="scores/m_container2"]
+margin_right = 720.0
+margin_bottom = 370.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="lbl_title" type="Label" parent="scores/m_container2/vb_container"]
+margin_right = 720.0
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+text = "HI-SCORES"
+align = 1
+
+[node name="scroll" type="ScrollContainer" parent="scores/m_container2/vb_container"]
+margin_top = 37.0
+margin_right = 720.0
+margin_bottom = 333.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="lbl_scores" type="Label" parent="scores/m_container2/vb_container/scroll"]
+margin_right = 720.0
+margin_bottom = 296.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+align = 1
+valign = 1
+uppercase = true
+
+[node name="lbl_continue" type="Label" parent="scores/m_container2/vb_container"]
+margin_top = 337.0
+margin_right = 720.0
+margin_bottom = 370.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0, 1, 0, 1 )
+text = "PRESS ENTER TO CONTINUE"
+align = 1

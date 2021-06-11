@@ -13,6 +13,7 @@ func _ready():
 func _process(_delta):
 	#print(time_elapsed)
 	if stopped and on_area:
+		Global.cur_score = time_elapsed
 		get_tree().change_scene("res://scenes/menus/end_game.tscn")
 	
 	time_now = OS.get_ticks_msec()
