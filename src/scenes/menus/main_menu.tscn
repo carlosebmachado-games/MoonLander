@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/menus/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/config_48.png" type="Texture" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://assets/sprites/music_48.png" type="Texture" id=7]
 [ext_resource path="res://assets/sprites/no_music_48.png" type="Texture" id=8]
 [ext_resource path="res://assets/sprites/sound_48.png" type="Texture" id=9]
+[ext_resource path="res://assets/audio/musics/jupiter.ogg" type="AudioStream" id=10]
+[ext_resource path="res://assets/audio/sounds/touch.wav" type="AudioStream" id=11]
 
 [node name="main_menu" type="Control"]
 anchor_right = 1.0
@@ -155,6 +157,12 @@ margin_left = 112.0
 margin_right = 160.0
 margin_bottom = 48.0
 texture_normal = ExtResource( 8 )
+
+[node name="music_bg" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="snd_touch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
 [connection signal="button_up" from="m_container/vb_container/cc_play/play" to="." method="_on_play_button_up"]
 [connection signal="button_up" from="m_container/vb_container/hb_container/config" to="." method="_on_config_button_up"]
 [connection signal="button_up" from="m_container/vb_container/hb_container/tutorial" to="." method="_on_tutorial_button_up"]

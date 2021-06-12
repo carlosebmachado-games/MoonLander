@@ -6,7 +6,7 @@ onready var part2 = $scores
 onready var txt_name = $enter_name/m_container/vb_container/txt_name
 onready var lbl_scores = $scores/m_container2/vb_container/scroll/lbl_scores
 
-const FILE_NAME = 'user://scores.json'#'scores.json'
+const FILE_NAME = 'scores'
 var scores = {}
 
 var ainputs = [
@@ -15,12 +15,7 @@ var ainputs = [
 	'Enter', 'BackSpace']
 
 func _ready():
-	var file = File.new()
-	if file.file_exists(FILE_NAME):
-		file.open(FILE_NAME, File.READ)
-		var text = file.get_as_text()
-		scores = parse_json(text)
-		file.close()
+	scores = Global.load_data(FILE_NAME)
 
 func _input(event):
 	if event is InputEventKey and event.is_pressed():
@@ -62,7 +57,7 @@ func set_new_score():
 	for i in range(len(key_scores)):
 		lbl_scores.text += key_scores[i] + ': ' + str(val_scores[i]) + '\n'
 	
-	save_scores()
+	Global.save_data(FILE_NAME, scores)
 
 func sort(keys, values):
 	for i in range(1, len(keys)):
@@ -74,9 +69,3 @@ func sort(keys, values):
 				var temp2 = values[j]
 				values[j] = values[j + 1]
 				values[j + 1] = temp2
-
-func save_scores():
-	var file = File.new()
-	file.open(FILE_NAME, File.WRITE)
-	file.store_line(to_json(scores))
-	file.close()
